@@ -115,7 +115,7 @@ func (c *Client) buildRequest(method string, params interface{}) (*http.Request,
 	if err != nil {
 		return nil, err
 	}
-    logger.Tittle("XML Request:")
+    logger.Tittle("SOAP: XML REQUEST")
     logger.Txt(doc)
 	r, err := http.NewRequest("POST", c.wsdl, doc)
 	r.Header.Set("Content-type", "text/xml;charset=UTF-8")
