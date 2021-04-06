@@ -4,11 +4,11 @@ import (
    	"fmt"
    	"reflect"
     "bytes"
-
     "io/ioutil"
     "net/http"
     "net/url"
     "strings"
+	"github.com/JulioVecino/logger"
 )
 
 // SoapClient return new *Client to handle the requests with the WSDL
@@ -115,7 +115,7 @@ func (c *Client) buildRequest(method string, params interface{}) (*http.Request,
 	if err != nil {
 		return nil, err
 	}
-    fmt.Printf("XML Request: %s",doc.String())
+    logger.Xml("XML Request:", doc)
 	r, err := http.NewRequest("POST", c.wsdl, doc)
 	r.Header.Set("Content-type", "text/xml;charset=UTF-8")
 	if err != nil {
